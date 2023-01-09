@@ -20,11 +20,11 @@
                         <h4>Register Customer</h4>
                     </div>
                     <div class="card-content">
-                        <form class="form-horizontal" action="" method="post" id="cus_form">
-                            {{csrf_field()}}
+                        <form class="form-horizontal" action="{{url('/save_cus_det')}}" method="POST" id="cus_form">
+                            @csrf
                             <div class="row" style="padding: 20px; padding-bottom: 0px;">
                                 <div class="col-xl-3 col-md-3 col-sm-3">
-                                    <select name="pets" id="cus_title" style="width:100px; border-radius: 5px;"
+                                    <select name="cus_title" id="cus_title" style="width:100px; border-radius: 5px;"
                                         required>
                                         <option hidden="true">--Title--</option>
                                         <option value="mr">Mr</option>
@@ -118,17 +118,19 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row" style="padding-bottom:15px">
+                                <div class="col-xl-3 col-md-3 col-sm-3"></div>
+                                <div class="col-xl-3 col-md-3 col-sm-3" style="padding-left: 45px;">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-3" style="padding-left: 40px;">
+                                    <button type="button" class="btn btn-primary" onclick="cancelform()">Cancel</button>
+                                </div>
+                                <div class="col-xl-3 col-md-3 col-sm-3"></div>
+                            </div>
+
                         </form>
-                    </div>
-                    <div class="row" style="padding-bottom:15px">
-                        <div class="col-xl-3 col-md-3 col-sm-3"></div>
-                        <div class="col-xl-3 col-md-3 col-sm-3" style="padding-left: 45px;">
-                            <button type="button" class="btn btn-success" onclick="save_details();">Submit</button>
-                        </div>
-                        <div class="col-xl-3 col-md-3 col-sm-3" style="padding-left: 40px;">
-                            <button type="button" class="btn btn-primary" onclick="cancelform()">Cancel</button>
-                        </div>
-                        <div class="col-xl-3 col-md-3 col-sm-3"></div>
                     </div>
                 </div>
             </div>
@@ -138,46 +140,6 @@
 </div>
 </div>
 
-<script>
-
-    function save_details() {
-        
-        var cus_title = document.getElementById('cus_title').selectedOptions[0].value;
-        var fname = document.getElementById('fname');
-        var lname = document.getElementById('lname');
-        var dob = document.getElementById('dob');
-        var nic = document.getElementById('nic');
-        var add01 = document.getElementById('add01');
-        var add02 = document.getElementById('add02');
-        var district = document.getElementById('district');
-        var zipcode = document.getElementById('zipcode');
-        var phone = document.getElementById('phone');
-        var email = document.getElementById('email');
-
-        $.ajax({
-            url: '/save_cus_det',
-            type: 'GET',
-            data: {
-                cus_title: cus_title,
-                fname: fname,
-                lname: lname,
-                dob: dob,
-                nic: nic,
-                // add01: add01,
-                // add02: add02,
-                // zipcode: zipcode,
-                // phone: phone,
-                // email: email,
-            },
-            success: function (response) {
-
-
-            }
-
-        });
-    }
-
-</script>
 
 <script>
     function cancelform(){

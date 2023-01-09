@@ -46,13 +46,30 @@ class CustomerController extends Controller
         $lname = $request->input('lname');
         $dob = $request->input('dob');
         $nic = $request->input('nic');
-        // $add01 = $request->input('add01');
-        // $add02 = $request->input('add02');
-        // $zipcode = $request->input('zipcode');
-        // $phone = $request->input('phone');
-        // $email = $request->input('email');
+        $add01 = $request->input('add01');
+        $add02 = $request->input('add02');
+        $district = $request->input('district');
+        $zipcode = $request->input('zipcode');
+        $phone = $request->input('phone');
+        $email = $request->input('email');
 
-        dd($lname);
+        $data = array('cus_title'=>$cus_title,
+					'fname'=>$fname,
+					'lname'=>$lname,
+                    'dob'=>$dob,
+                    'nic'=>$nic,
+                    'add_line01'=>$add01,
+                    'add_line02'=>$add02,
+                    'add_line02'=>$add02,
+                    'district'=>$district,
+                    'cus_phone_number'=>$phone,
+                    'cus_email'=>$email,
+		);
+
+        DB::table('ocean_breeze.tbl_customers')
+            ->insert($data);
+        
+        return view("customer.dashboard");
     }
 
     /**

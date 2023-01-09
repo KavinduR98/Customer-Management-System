@@ -1,19 +1,17 @@
-@extends('customer.layout')
-
-@section('content-user')
+@extends('customer.layout') @section('content-user')
 
 <head>
-  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" />
 </head>
 
-<body style="background-color:#AFDCEC;">
+<body style="background-color: #afdcec">
   <div class="container">
     <div class="forms">
       <div class="form login">
         <span class="title"> Register </span>
 
-        <form action="{{url('/user_create')}}" method="POST">
-        @csrf
+        <form action="{{ url('/user_create') }}" method="POST">
+          @csrf
 
           <div class="input-field">
             <input type="email" placeholder="Enter your email" name="email" id="email" required />
@@ -23,13 +21,14 @@
           <div class="input-field">
             <input type="password" placeholder="Enter your password" name="password" id="password" required />
             <i class="uil uil-lock icon"></i>
-            <i class="uil uil-eye-slash showHidePw" style="cursor: pointer;" onclick="showPass()"></i>
+            <i class="uil uil-eye-slash showHidePw" style="cursor: pointer" onclick="showPass()"></i>
           </div>
 
           <div class="input-field">
-            <input type="password" placeholder="Enter your password" name="confirmPassword" id="confirmPassword" required />
+            <input type="password" placeholder="Enter your password" name="confirmPassword" id="confirmPassword"
+              required />
             <i class="uil uil-lock icon"></i>
-            <i class="uil uil-eye-slash showHidePw" style="cursor: pointer;" onclick="showConfirmPass()"></i>
+            <i class="uil uil-eye-slash showHidePw" style="cursor: pointer" onclick="showConfirmPass()"></i>
           </div>
 
           <div class="checkbox-text">
@@ -55,22 +54,22 @@
 </body>
 
 <script>
- function showPass() {
-  var password = document.getElementById("password");
-  if (password.type === "password") {
-    password.type = "text";
-  } else {
-    password.type = "password";
+  function showPass() {
+    var password = document.getElementById("password");
+    if (password.type === "password") {
+      password.type = "text";
+    } else {
+      password.type = "password";
+    }
   }
-}
 
-function showConfirmPass() {
-  var conPassword = document.getElementById("confirmPassword");
-  if (conPassword.type === "password") {
-    conPassword.type = "text";
-  } else {
-    conPassword.type = "password";
+  function showConfirmPass() {
+    var conPassword = document.getElementById("confirmPassword");
+    if (conPassword.type === "password") {
+      conPassword.type = "text";
+    } else {
+      conPassword.type = "password";
+    }
   }
-}
 </script>
 @endsection
